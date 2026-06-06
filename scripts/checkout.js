@@ -15,11 +15,6 @@ cart.forEach((cartItem) => {
         }
     });
 
-    if (!matchingProduct) {
-        console.log('Not Found:', productId);
-        return;
-    }
-
   cartSummaryHTML += ` <div class="cart-item-container
    js-cart-item-container-${matchingProduct.id}">            
         <div class="delivery-date">
