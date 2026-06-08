@@ -40,7 +40,8 @@ cart.forEach((cartItem) => {
                 Update
             </span>
             <span class="delete-quantity-link link-primary js-delete-link" 
-             data-product-id = "${matchingProduct.id}">
+             data-product-id = "${matchingProduct.id}"
+             data-product-quantity = "${cartItem.quantity}">
                 Delete
             </span>
             </div>
@@ -113,3 +114,34 @@ document.querySelector('.js-order-summary')
     });
 
   });
+
+  
+function updateCartQuantity () {
+
+    let Quantity = 0;
+
+   cart.forEach((CartItem) => {
+      Quantity += CartItem.quantity;
+   });
+
+   document.querySelectorAll('.js-delete-link')
+    .forEach((button) =>{
+        button.addEventListener('click' , () => {
+            Quantity = Quantity - Number(button.dataset.productQuantity);
+
+            document.querySelector(`.js-checkout-header-middle-section`)
+         .innerHTML = `Checkout(${Quantity} items)`;
+ 
+        } );
+
+        document.querySelector(`.js-checkout-header-middle-section`)
+         .innerHTML = `Checkout(${Quantity} items)`;
+
+        
+    });
+   
+  
+}
+updateCartQuantity () ;
+
+
